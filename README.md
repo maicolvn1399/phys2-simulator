@@ -1,6 +1,6 @@
 # physics2-simulator
 
-Simulaciones interactivas de Física II (FI-1102, TEC) en React + Vite: Ley de Ampère, Biot–Savart y circuitos con resistencias.
+Simulaciones interactivas de Física 
 
 ## Correr en local
 
