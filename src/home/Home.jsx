@@ -58,9 +58,9 @@ function CircuitPreview({ on, tokens }) {
 }
 
 const CARDS = [
-  ['ampere', 'Ley de Ampère', 'Coloca alambres con corriente y un punto P: cada alambre aporta su campo por la ley de Ampère y en P se suman como vectores.', AmperePreview],
-  ['biot-savart', 'Biot–Savart', 'Dibuja alambres rectos, inclinados y arcos como en Paint, coloca P y obtén B con la integral paso a paso, simbólica y numérica.', BiotPreview],
-  ['circuitos', 'Circuitos', 'Arma circuitos con resistencias y una fuente ε, mira cómo se reducen a R_eq y resuélvelos con Kirchhoff por mallas o por ramas.', CircuitPreview],
+  ['ampere', 'Ley de Ampère', 'Permite colocar alambres con corriente y un punto P, cada alambre aporta su campo por la ley de Ampère y en P se suman como vectores, se incluye un paso a paso.', AmperePreview],
+  ['biot-savart', 'Biot–Savart', 'Permite simular y dibujar alambres rectos, inclinados y arcos, se permite colocar un P y obtener Campo Magnetico calculado en el punto P, se incluye un con un paso a paso, con respuestas simbólicas y numéricas.', BiotPreview],
+  ['circuitos', 'Circuitos', 'Circuitos electricos con resistencias y una fuente ε, permite ver su reducción a R_eq y soluciones con leyes de Kirchhoff por mallas o por nodos.', CircuitPreview],
 ];
 
 function Scaled({ children }) {
