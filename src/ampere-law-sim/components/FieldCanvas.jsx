@@ -162,7 +162,7 @@ export default function FieldCanvas(props) {
         else { ctx.beginPath(); ctx.moveTo(x - 6, y - 6); ctx.lineTo(x + 6, y + 6); ctx.moveTo(x + 6, y - 6); ctx.lineTo(x - 6, y + 6); ctx.stroke(); }
         if (i === sel) { ctx.setLineDash([3, 3]); ctx.strokeStyle = T.fg; ctx.lineWidth = 1.2; ctx.beginPath(); ctx.arc(x, y, WIRE_R + 5, 0, Math.PI * 2); ctx.stroke(); ctx.setLineDash([]); }
         const left = x > s.W - 150;
-        ctx.font = '600 13px "Instrument Sans", sans-serif'; ctx.fillStyle = T.fg; ctx.textAlign = left ? 'right' : 'left';
+        ctx.font = '600 13px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = T.fg; ctx.textAlign = left ? 'right' : 'left';
         ctx.fillText(`${wlabel(wi.name)} · ${nf(wi.I, 1)} A ${wi.s > 0 ? '⊙' : '⊗'}`, left ? x - WIRE_R - 6 : x + WIRE_R + 6, y - 5);
         tag(`(${cm(wi.x)}; ${cm(wi.y)})`, left ? x - WIRE_R - 4 : x + WIRE_R + 4, y + 12, T, T.muted, left ? 'right' : 'left');
       });
@@ -182,7 +182,7 @@ export default function FieldCanvas(props) {
       ctx.fillStyle = T.probe; ctx.beginPath(); ctx.arc(ppx, ppy, 7.5, 0, Math.PI * 2); ctx.fill();
       ctx.strokeStyle = T.surface; ctx.lineWidth = 2; ctx.stroke();
       const pl = ppx > s.W - 170;
-      ctx.font = '700 14px "Instrument Sans", sans-serif'; ctx.fillStyle = T.fg; ctx.textAlign = pl ? 'right' : 'left';
+      ctx.font = '700 14px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = T.fg; ctx.textAlign = pl ? 'right' : 'left';
       ctx.fillText('P', pl ? ppx - 12 : ppx + 12, ppy - 10);
       tag(`(${cm(probe.x)}; ${cm(probe.y)}) cm`, pl ? ppx - 10 : ppx + 10, ppy + 9, T, T.fg, pl ? 'right' : 'left');
       tag(`|B| = ${nf(m * 1e6)} µT`, pl ? ppx - 10 : ppx + 10, ppy + 27, T, T.probe, pl ? 'right' : 'left');

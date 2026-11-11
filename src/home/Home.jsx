@@ -78,7 +78,7 @@ function Scaled({ children }) {
   );
 }
 
-function Card({ id, name, desc, Preview, onGo, tokens }) {
+function Card({ id, name, desc, Preview, onGo, tokens, n }) {
   const [hover, setHover] = useState(false);
   const on = (hover || noHover) && !reduceMotion;
   return (
@@ -86,9 +86,10 @@ function Card({ id, name, desc, Preview, onGo, tokens }) {
       onMouseEnter={() => setHover(true)} onMouseLeave={() => setHover(false)} onFocus={() => setHover(true)} onBlur={() => setHover(false)}>
       <Scaled><Preview on={on} tokens={tokens} /></Scaled>
       <div className="home-card-body">
+        <span className="home-num">#{String(n).padStart(2, '0')}</span>
         <h2>{name}</h2>
         <p>{desc}</p>
-        <span className="home-go">Abrir simulación →</span>
+        <span className="home-go">abrir →</span>
       </div>
     </a>
   );
@@ -100,12 +101,12 @@ export default function Home({ onGo }) {
   return (
     <div className="wrap">
       <header>
-        <div className="eyebrow">Física II · FI-1102 · TEC</div>
-        <h1>Simulaciones de electromagnetismo y circuitos</h1>
-        <p className="lead">Herramientas interactivas para resolver los ejercicios del curso: se dibuja el problema y se ven las ecuaciones paso a paso. Pasa el mouse por una tarjeta para ver cada simulación en acción.</p>
+        <div className="eyebrow">Simulaciones</div>
+        <h1>Física II, <em>simulaciones con paso a paso</em></h1>
+        <p className="lead">Herramientas interactivas para resolver ejercicios: se dibuja el problema y se ven las ecuaciones paso a paso. Pasa el mouse por una tarjeta para ver un preview de cada simulación.</p>
       </header>
       <div className="home-grid">
-        {CARDS.map(([id, name, desc, Preview]) => <Card key={id} id={id} name={name} desc={desc} Preview={Preview} onGo={onGo} tokens={tokens} />)}
+        {CARDS.map(([id, name, desc, Preview], i) => <Card key={id} n={i + 1} id={id} name={name} desc={desc} Preview={Preview} onGo={onGo} tokens={tokens} />)}
       </div>
     </div>
   );

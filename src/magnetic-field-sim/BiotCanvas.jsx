@@ -399,7 +399,7 @@ export default function BiotCanvas(props) {
           mid = { p: toS(e.ax + um * lx, e.ay + um * ly), d: [lx, -ly] };
         } else mid = along(e, Lm / 2);
         arrow(mid.p[0] - mid.d[0] * 8, mid.p[1] - mid.d[1] * 8, mid.d[0], mid.d[1], 10, T.fg, 2.6, 5.5);
-        ctx.font = '600 12px "Instrument Sans", sans-serif';
+        ctx.font = '600 12px "IBM Plex Sans Condensed", sans-serif';
         const nx = -mid.d[1], ny = mid.d[0];
         const bx = mid.p[0] + nx * 16, by = mid.p[1] + ny * 16;
         ctx.fillStyle = isSel ? T.loop : T.surface; ctx.strokeStyle = isSel ? T.loop : T.line; ctx.lineWidth = 1;
@@ -416,7 +416,7 @@ export default function BiotCanvas(props) {
               let tt = 0; const step = 4;
               let qx = px, qy = py;
               while (tt < 3000 && qx > 18 && qx < W - 18 && qy > 18 && qy < H - 18) { qx += sgn * lx * step; qy -= sgn * ly * step; tt += step; }
-              ctx.font = '600 15px "Instrument Sans", sans-serif'; ctx.fillStyle = T.muted; ctx.textAlign = 'center';
+              ctx.font = '600 15px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = T.muted; ctx.textAlign = 'center';
               ctx.fillText('∞', qx - ly * 12 * sgn, qy - lx * 12 * sgn + 5); ctx.textAlign = 'left';
             }
           }
@@ -553,7 +553,7 @@ export default function BiotCanvas(props) {
       }
       ctx.fillStyle = T.probe; ctx.strokeStyle = T.surface; ctx.lineWidth = 2;
       ctx.beginPath(); ctx.arc(ppx, ppy, 5.5, 0, TAU); ctx.fill(); ctx.stroke();
-      ctx.font = '600 13px "Instrument Sans", sans-serif'; ctx.fillStyle = T.fg; ctx.fillText('P', ppx + 8, ppy - 8);
+      ctx.font = '600 13px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = T.fg; ctx.fillText('P', ppx + 8, ppy - 8);
       const zTxt = Math.abs(probe.z) > 1e-9 ? `; ${cm(probe.z)}` : '';
       tag(symMode() ? `P ${ptTxt(probe.x, probe.y)}` : `(${cm(probe.x)}; ${cm(probe.y)}${zTxt}) cm`, ppx + 26, ppy + 6, T, T.fg);
       const dirTxt = Math.abs(probe.z) < 1e-9 ? (bz > 1e-12 ? ' ⊙' : bz < -1e-12 ? ' ⊗' : '') : '';

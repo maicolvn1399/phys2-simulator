@@ -83,7 +83,7 @@ export default function CircuitCanvas(props) {
         ctx.beginPath(); ctx.moveTo(m[0] + nx * Ls, m[1] + ny * Ls); ctx.lineTo(m[0] - nx * Ls, m[1] - ny * Ls); ctx.stroke();
         ctx.lineWidth = lw;
         ctx.beginPath(); ctx.moveTo(pl[0] + nx * Ll, pl[1] + ny * Ll); ctx.lineTo(pl[0] - nx * Ll, pl[1] - ny * Ll); ctx.stroke();
-        ctx.font = '600 14px "Instrument Sans", sans-serif'; ctx.fillStyle = color; ctx.textAlign = 'center';
+        ctx.font = '600 14px "IBM Plex Sans Condensed", sans-serif'; ctx.fillStyle = color; ctx.textAlign = 'center';
         ctx.fillText('+', pl[0] + ux * 12 + nx * (Ll + 4), pl[1] + uy * 12 + ny * (Ll + 4) + 5);
         ctx.fillText('−', m[0] - ux * 12 + nx * (Ls + 8), m[1] - uy * 12 + ny * (Ls + 8) + 5);
         ctx.textAlign = 'left';
@@ -283,7 +283,7 @@ export default function CircuitCanvas(props) {
           done.add(n);
           const v = an.geo.verts.get(k), [x, y] = toS(v.x, v.y);
           ctx.fillStyle = T.loop; ctx.beginPath(); ctx.arc(x, y, 10, 0, TAU); ctx.fill();
-          ctx.fillStyle = T.surface; ctx.font = '600 12px "Instrument Sans", sans-serif'; ctx.textAlign = 'center';
+          ctx.fillStyle = T.surface; ctx.font = '600 12px "IBM Plex Sans Condensed", sans-serif'; ctx.textAlign = 'center';
           ctx.fillText(an.branch.pnames.get(n), x, y + 4); ctx.textAlign = 'left';
         }
       }
