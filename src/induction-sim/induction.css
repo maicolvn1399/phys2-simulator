@@ -1,0 +1,7 @@
+/* Inducción electromagnética: solo lo que no está en styles.css */
+.key-out { background: var(--out); }
+.key-in { background: var(--in); }
+.timebar { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 10px 18px; padding: 10px 12px; border-top: 1px solid color-mix(in srgb, var(--ink) 30%, transparent); }
+.timebar .speed { flex: 1 1 320px; min-width: 0; }
+.timebar .speed input { width: auto; flex: 1; min-width: 120px; }
+.timebar output { min-width: 112px; text-align: right; }

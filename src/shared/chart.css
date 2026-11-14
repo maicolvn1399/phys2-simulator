@@ -1,0 +1,12 @@
+/* Gráficas de línea (shared/LineChart.jsx): usan los colores del tema */
+.series { fill: none; stroke-width: 2.4; stroke-linejoin: round; stroke-linecap: round; }
+.series.c1 { stroke: var(--loop); }
+.series.c2 { stroke: var(--field); }
+.series.c3 { stroke: var(--out); }
+.series.c4 { stroke: var(--in); }
+.series.ref { stroke: var(--muted); stroke-width: 1.5; stroke-dasharray: 6 5; }
+.dot { stroke: var(--surface); stroke-width: 2; }
+.dot.c1 { fill: var(--loop); } .dot.c2 { fill: var(--field); } .dot.c3 { fill: var(--out); } .dot.c4 { fill: var(--in); }
+.chart-label { font: 11px var(--mono); fill: var(--muted); }
+.chart-label.strong { fill: var(--fg); font-weight: 600; }
+.chart-label.loop { fill: var(--loop); }
