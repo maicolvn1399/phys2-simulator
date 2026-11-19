@@ -285,7 +285,7 @@ input[type=range] { accent-color: var(--pen); }
 
 /* portada */
 .home-card { border: 1.5px solid var(--ink); border-radius: 3px; padding: 12px; box-shadow: 4px 4px 0 var(--ink); transform: rotate(var(--tilt, 0deg)); transition: transform .25s ease, box-shadow .25s ease; }
-.home-card:nth-child(1) { --tilt: -.6deg; } .home-card:nth-child(2) { --tilt: .5deg; } .home-card:nth-child(3) { --tilt: -.3deg; }
+.home-card:nth-child(1) { --tilt: -.6deg; } .home-card:nth-child(2) { --tilt: .5deg; } .home-card:nth-child(3) { --tilt: -.3deg; } .home-card:nth-child(4) { --tilt: .4deg; } .home-card:nth-child(5) { --tilt: -.5deg; }
 .home-card:hover, .home-card:focus-visible { transform: rotate(0deg) translate(-2px, -4px); box-shadow: 7px 9px 0 var(--ink); border-color: var(--ink); }
 .home-preview { border: 1px dashed color-mix(in srgb, var(--ink) 40%, transparent); }
 .home-card-body { padding: 10px 2px 2px; }

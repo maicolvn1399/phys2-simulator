@@ -2,6 +2,11 @@ import { useEffect, useMemo, useRef, useState } from 'react';
 import FieldCanvas from '../ampere-law-sim/components/FieldCanvas.jsx';
 import BiotCanvas from '../magnetic-field-sim/BiotCanvas.jsx';
 import CircuitCanvas from '../circuit-sim/CircuitCanvas.jsx';
+import GaussCanvas from '../gauss-law-sim/GaussCanvas.jsx';
+import { G_PRESETS } from '../gauss-law-sim/presets.js';
+import InductionCanvas from '../induction-sim/InductionCanvas.jsx';
+import { I_PRESETS, fullP } from '../induction-sim/presets.js';
+import { model } from '../induction-sim/physics.js';
 import { PRESETS, clone } from '../ampere-law-sim/presets.js';
 import { BS_PRESETS, withIds } from '../magnetic-field-sim/presets.js';
 import { C_PRESETS, withNames } from '../circuit-sim/presets.js';
@@ -57,10 +62,33 @@ function CircuitPreview({ on, tokens }) {
     showResults showFlow animate={on} tokens={tokens} onCreate={noop} onSelect={noop} onDelete={noop} />;
 }
 
+function GaussPreview({ on, tokens }) {
+  const p = G_PRESETS.dentro;
+  return <GaussCanvas Q={p.Q} R={p.R} r={p.r} dist={p.dist} tokens={tokens} animate={on}
+    layers={{ vec: true, enc: true, dots: true }} onRadius={noop} />;
+}
+
+function InductionPreview({ on, tokens }) {
+  const p = useMemo(() => fullP('generador'), []);
+  const T = useMemo(() => model(I_PRESETS.generador.mode, p).T, [p]);
+  const [t, setT] = useState(0.3);
+  // al pasar el mouse: la espira gira y la corriente inducida circula
+  useEffect(() => {
+    if (!on) { setT(0.3); return undefined; }
+    let raf, last = 0;
+    const frame = ts => { const dt = last ? Math.min(0.05, (ts - last) / 1000) : 0; last = ts; setT(v => (v + dt * 0.6) % T); raf = requestAnimationFrame(frame); };
+    raf = requestAnimationFrame(frame);
+    return () => cancelAnimationFrame(raf);
+  }, [on, T]);
+  return <InductionCanvas mode={I_PRESETS.generador.mode} p={p} t={t} tokens={tokens} animate={on} />;
+}
+
 const CARDS = [
   ['ampere', 'Ley de Ampère', 'Permite colocar alambres con corriente y un punto P, cada alambre aporta su campo por la ley de Ampère y en P se suman como vectores, se incluye un paso a paso.', AmperePreview],
   ['biot-savart', 'Biot–Savart', 'Permite simular y dibujar alambres rectos, inclinados y arcos, se permite colocar un P y obtener Campo Magnetico calculado en el punto P, se incluye un con un paso a paso, con respuestas simbólicas y numéricas.', BiotPreview],
   ['circuitos', 'Circuitos', 'Circuitos electricos con resistencias y una fuente ε, permite ver su reducción a R_eq y soluciones con leyes de Kirchhoff por mallas o por nodos.', CircuitPreview],
+  ['gauss', 'Ley de Gauss', 'Esfera aislante con carga en todo su volumen: se elige el radio de la superficie gaussiana y se ve la carga encerrada, el flujo y el campo E dentro y fuera, con el paso a paso y gráficas de E(r) y q_enc(r).', GaussPreview],
+  ['induccion', 'Inducción electromagnética', 'Ley de Faraday y ley de Lenz: espira en un campo B(t), barra deslizante sobre rieles y espira giratoria (generador). Se ve la fem y la corriente inducidas, su sentido y las gráficas de Φ(t) y ε(t) con el paso a paso.', InductionPreview],
 ];
 
 function Scaled({ children }) {

@@ -2,12 +2,16 @@ import { useEffect, useState } from 'react';
 import AmpereApp from './ampere-law-sim/AmpereApp.jsx';
 import BiotApp from './magnetic-field-sim/BiotApp.jsx';
 import CircuitApp from './circuit-sim/CircuitApp.jsx';
+import GaussApp from './gauss-law-sim/GaussApp.jsx';
+import InductionApp from './induction-sim/InductionApp.jsx';
 import Home from './home/Home.jsx';
 
 const SIMS = [
   ['ampere', 'Ley de Ampère', AmpereApp],
   ['biot-savart', 'Biot–Savart', BiotApp],
   ['circuitos', 'Circuitos', CircuitApp],
+  ['gauss', 'Ley de Gauss', GaussApp],
+  ['induccion', 'Inducción', InductionApp],
 ];
 /** Tema actual: el guardado por el usuario o, si no hay, el del sistema. */
 const currentTheme = () => {

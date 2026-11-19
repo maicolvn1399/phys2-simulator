@@ -39,7 +39,16 @@ src/
 │   ├── CircuitApp.jsx, CircuitCanvas.jsx, CircuitEquations.jsx
 │   ├── model.js, frac.js
 │   └── presets.js
-└── shared/               # format.js, useThemeTokens.js, Tex.jsx, NumField.jsx
+├── gauss-law-sim/        # Ley de Gauss: esfera aislante, superficie gaussiana, E(r) y q_enc(r)
+│   ├── GaussApp.jsx, GaussCanvas.jsx, GaussEquations.jsx, GaussCharts.jsx
+│   ├── physics.js        # q_enc, Φ, E_r, ρ (uniforme y ρ = ρ₀ r/R)
+│   ├── presets.js, gauss.css
+├── induction-sim/        # Inducción: Faraday y Lenz (B variable, barra móvil, espira giratoria)
+│   ├── InductionApp.jsx, InductionCanvas.jsx, InductionEquations.jsx, InductionCharts.jsx
+│   ├── physics.js        # Φ(t), ε(t), sentido de la corriente (Lenz)
+│   ├── presets.js, induction.css
+└── shared/               # format.js, useThemeTokens.js, Tex.jsx, NumField.jsx,
+                          # Slider.jsx, LineChart.jsx (+ chart.css), units.js
 ```
 
-Rutas: `#ampere`, `#biot-savart`, `#circuitos` (sin hash: página principal).
+Rutas: `#ampere`, `#biot-savart`, `#circuitos`, `#gauss`, `#induccion` (sin hash: página principal).
